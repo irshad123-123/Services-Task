@@ -24,4 +24,7 @@ export class Todo3Service{
     featchAllAPI(){
         return of(this.todo3Arr)
     }
+    addCity(todo : Itodo){
+        this.todo3Arr.push(todo)
+    }
 }

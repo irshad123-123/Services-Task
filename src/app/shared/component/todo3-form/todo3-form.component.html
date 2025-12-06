@@ -1,1 +1,14 @@
-<p>todo3-form works!</p>
+<div class="card">
+    <div class="card-body">
+        <form #addCity="ngForm" (ngSubmit)="onAddCity()">
+            <div class="form-group">
+                <input 
+                ngModel
+                name="todoItem"
+                required
+                type="text" class="form-control" placeholder="Add City...">
+            </div>
+            <button type="submit" class="btn-block" mat-raised-button color="primary">Add City</button>
+        </form>
+    </div>
+</div>

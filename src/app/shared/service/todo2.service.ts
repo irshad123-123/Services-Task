@@ -24,4 +24,7 @@ export class Todo2Service{
     featchAllAPI(){
         return of(this.todo2Arr)
     }
+    createLang(todo : Itodo){
+        this.todo2Arr.push(todo)
+    }
 }

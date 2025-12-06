@@ -15,6 +15,9 @@ import { Todo3FormComponent } from './shared/component/todo3-form/todo3-form.com
 import { Todo4ListComponent } from './shared/component/todo4-list/todo4-list.component';
 import { Todo4FormComponent } from './shared/component/todo4-form/todo4-form.component';
 import {MatIconModule} from '@angular/material/icon';
+import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -35,7 +38,9 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

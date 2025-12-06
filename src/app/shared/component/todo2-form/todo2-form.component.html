@@ -1,1 +1,14 @@
-<p>todo2-form works!</p>
+<div class="card">
+    <div class="card-body">
+        <form #addLang="ngForm" (ngSubmit)="onAddLang()">
+            <div class="form-group">
+                <input
+                ngModel
+                name="todoItem"
+                required
+                type="text" class="form-control" placeholder="Add Language...">
+            </div>
+            <button class="btn-block" mat-raised-button color="primary">Add Language</button>
+        </form>
+    </div>
+</div>

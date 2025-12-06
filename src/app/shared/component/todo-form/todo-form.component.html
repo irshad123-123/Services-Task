@@ -1,1 +1,14 @@
-<p>todo-form works!</p>
+<div class="card">
+    <div class="card-body">
+        <form #todoItem="ngForm" (ngSubmit)="onAddTodo()">
+            <div class="form-group">
+                <input
+                required
+            ngModel
+            name="todoItem"
+            placeholder="Add todoItems...." class="form-control">
+            </div>
+            <button type="submit" class="btn-block" mat-raised-button color="primary">Add Todo</button>
+        </form>
+    </div>
+</div>

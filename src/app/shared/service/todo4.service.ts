@@ -24,4 +24,7 @@ export class Todo4Service{
     featchAllAPI(){
         return of(this.todo4Arr)
     }
+    addDirective(todo:Itodo){
+        this.todo4Arr.push(todo)
+    }
 }

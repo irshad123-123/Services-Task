@@ -28,4 +28,7 @@ export class TodoService{
     featchAllTodo(){
         return of(this.todoArr)
     }
+    createTodo(todo : Itodo){
+        this.todoArr.push(todo)
+    }
 }

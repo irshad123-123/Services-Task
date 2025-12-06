@@ -1,1 +1,14 @@
-<p>todo1-form works!</p>
+<div class="card">
+    <div class="card-body">
+        <form #addLab="ngForm"  (ngSubmit)="onAddLib()">
+            <div class="form-group">
+                <input
+                required
+                ngModel
+                name="todoItem"
+                class="form-control" placeholder="Add Libraries...">
+            </div>
+            <button type="submit" class="btn-block" mat-raised-button color="primary">Add Libraries</button>
+        </form>
+    </div>
+</div>

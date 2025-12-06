@@ -25,4 +25,7 @@ export class Todo1Service{
     featchAllAPI(){
         return of(this.todo1Arr)
     }
+    createLib(todo : Itodo){
+        this.todo1Arr.push(todo)
+    }
 }
