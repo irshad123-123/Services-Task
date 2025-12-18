@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        <h2>{{isEditMode ? 'Update City' : 'Add City'}}</h2>
         <form #addCity="ngForm" (ngSubmit)="onAddCity()">
             <div class="form-group">
                 <input 
@@ -8,7 +9,10 @@
                 required
                 type="text" class="form-control" placeholder="Add City...">
             </div>
-            <button type="submit" class="btn-block" mat-raised-button color="primary">Add City</button>
+            <button *ngIf="!isEditMode" type="submit" class="btn-block" mat-raised-button color="primary">Add City</button>
+            <button
+            (click)="onUpdate()"
+            *ngIf="isEditMode" type="button" class="btn-block" mat-raised-button color="primary">Update City</button>
         </form>
     </div>
 </div>

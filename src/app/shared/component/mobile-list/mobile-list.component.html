@@ -1,0 +1,18 @@
+<ul class="list-group" *ngIf="mobArr1.length>0; else noData">
+    <li
+    *ngFor="let mob of mobArr1"
+    class="list-group-item d-flex justify-content-between align-items-center">
+        <strong>{{mob.mobItem}}</strong>
+        <div>
+            <button
+            (click)="onEdit(mob)"
+            class="mr-2" mat-raised-button color="primary">Edit</button>
+            <button
+            (click)="onRemove(mob.mobId)"
+            mat-raised-button color="warn">Remove</button>
+        </div>
+    </li>
+</ul>
+<ng-template #noData>
+    <p class="alert alert-warning">No mobiles...</p>
+</ng-template>

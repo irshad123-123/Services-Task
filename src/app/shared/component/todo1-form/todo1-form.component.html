@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        <h2>{{isEditMode ? 'Update Library' : 'Add Library'}}</h2>
         <form #addLab="ngForm"  (ngSubmit)="onAddLib()">
             <div class="form-group">
                 <input
@@ -8,7 +9,10 @@
                 name="todoItem"
                 class="form-control" placeholder="Add Libraries...">
             </div>
-            <button type="submit" class="btn-block" mat-raised-button color="primary">Add Libraries</button>
+            <button *ngIf="!isEditMode" type="submit" class="btn-block" mat-raised-button color="primary">Add Libraries</button>
+            <button 
+            (click)="onUpdate()"
+            *ngIf="isEditMode" type="button" class="btn-block" mat-raised-button color="primary">Update Libraries</button>
         </form>
     </div>
 </div>

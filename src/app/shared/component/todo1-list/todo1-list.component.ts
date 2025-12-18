@@ -17,5 +17,13 @@ export class Todo1ListComponent implements OnInit {
         this.todo1Arr = res
       })
   }
-
+  onRemove(id:string){
+    let isConfirm = confirm('Are you sure, want to remove this library!!!')
+    if(isConfirm){
+        this._todo1Service.removeLib(id)
+    }
+  }
+  onEdit(todo:Itodo){
+    this._todo1Service.lib$.next(todo)
+  }
 }

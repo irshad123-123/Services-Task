@@ -12,6 +12,7 @@ import { SnackBarService } from '../../service/snack-bar.service';
 })
 export class Todo1FormComponent implements OnInit {
   @ViewChild('addLab') form ! : NgForm
+  isEditMode : boolean = false
   constructor(
     private _todo1Service : Todo1Service,
     private _uuidService : UuidService,
@@ -19,6 +20,18 @@ export class Todo1FormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.editLib()
+  }
+  editLib(){
+    this._todo1Service.lib$
+      .subscribe({
+        next : res =>{
+          this.form.form.patchValue(res)
+          this.isEditMode = true
+          this.editObj = res
+        },
+        error :err =>console.log(err)
+      })
   }
   onAddLib(){
     if(this.form.valid){
@@ -30,6 +43,16 @@ export class Todo1FormComponent implements OnInit {
     this.form.reset()
     this._snackBar.snackBar('The new libarery is added successfully!!!')
     }
+  }
+  editObj ! : Itodo
+  onUpdate(){
+    let Obj = {
+      ...this.form.value,
+      todoId : this.editObj.todoId
+    }
+    this._todo1Service.updateLib(Obj)
+    this.isEditMode = false
+    this.form.reset()
   }
 
 }

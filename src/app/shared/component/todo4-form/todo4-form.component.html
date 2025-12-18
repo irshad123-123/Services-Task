@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        <h2>{{isEditMode ? 'Update Directives' : 'Add Directives'}}</h2>
         <form #addDir="ngForm" (ngSubmit)="onAddDir()">
             <div class="form-group">
                 <input
@@ -8,7 +9,10 @@
                 required
                 placeholder="Add Directives..." type="text" class="form-control">
             </div>
-            <button type="submit" class="btn-block" mat-raised-button color="primary">Add Directives</button>
+            <button *ngIf="!isEditMode" type="submit" class="btn-block" mat-raised-button color="primary">Add Directives</button>
+            <button
+            (click)="onUpdate()"
+            *ngIf="isEditMode" type="button" class="btn-block" mat-raised-button color="primary">Update Directives</button>
         </form>
     </div>
 </div>

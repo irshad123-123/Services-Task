@@ -12,6 +12,7 @@ import { SnackBarService } from '../../service/snack-bar.service';
 })
 export class Todo3FormComponent implements OnInit {
   @ViewChild('addCity') form ! : NgForm
+  isEditMode : boolean = false
   constructor(
     private _todo3Service : Todo3Service,
     private _uuidService : UuidService,
@@ -19,6 +20,20 @@ export class Todo3FormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.onEdit()
+  }
+  onEdit(){
+    this._todo3Service.city$
+      .subscribe({
+        next : res =>{
+          this.form.form.patchValue(res)
+          this.isEditMode = true
+          this.editId = res.todoId
+        },
+        error : err =>{
+          console.log(err) 
+        }
+      })
   }
   onAddCity(){
     if(this.form.valid){
@@ -31,5 +46,14 @@ export class Todo3FormComponent implements OnInit {
       this._snackBar.snackBar('The new city is added successfully!!!')
     }
   }
-
+  editId ! : string
+  onUpdate(){
+    let Obj = {
+      ...this.form.value,
+      todoId : this.editId
+    }
+    this._todo3Service.updateCity(Obj)
+    this.form.reset()
+    this.isEditMode = false
+  }
 }

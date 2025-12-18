@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../../service/todo.service';
 import { Itodo } from '../../models/todo';
+import { SnackBarService } from '../../service/snack-bar.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -18,5 +19,14 @@ export class TodoListComponent implements OnInit {
         this.todoArr = res
       })
   }
-
+  onRemove(id:string){
+    let isconfirm = confirm('Are you sure, want to remove this todoItem...')
+    if(isconfirm){
+      this._todoService.removeTodo(id)
+    }
+  }
+  // todo$ ! : Itodo
+  onEdit(todo:Itodo){
+    this._todoService.todo$.next(todo)
+  }
 }

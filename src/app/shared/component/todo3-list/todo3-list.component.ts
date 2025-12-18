@@ -17,5 +17,13 @@ export class Todo3ListComponent implements OnInit {
         this.todo3Arr = res
       })
   }
-
+  onRemove(id : string){
+    let isConfirm = confirm('Are you sure, want to remove this city!!!')
+    if(isConfirm){
+      this._todo3Service.removeCity(id)
+    }
+  }
+  onEdit(obj:Itodo){
+    this._todo3Service.city$.next(obj)
+  }
 }

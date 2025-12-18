@@ -1,0 +1,22 @@
+<h2>{{isEditMode ? 'Update Mode' : 'Add Mode'}}</h2>
+<div class="card">
+    <div class="card-body">
+        <form #mobRef="ngForm" (ngSubmit)="onAddMob()">
+            <div class="form-group">
+                <input
+                ngModel
+                required 
+                name="mobItem"
+                #mobItem="ngModel"
+                placeholder="Add Mobiles..." class="form-control">
+            </div>
+            <button
+            *ngIf = "!isEditMode"
+            type="submit" class="btn-block" mat-raised-button color="primary">Add Mobile</button>
+            <button
+            *ngIf="isEditMode"
+            (click)="onUpdate()"
+            type="button" class="btn-block" mat-raised-button color="primary">Update Mobile</button>
+        </form>
+    </div>
+</div>

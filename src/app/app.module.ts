@@ -17,6 +17,8 @@ import { Todo4FormComponent } from './shared/component/todo4-form/todo4-form.com
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MobileListComponent } from './shared/component/mobile-list/mobile-list.component';
+import { MobileFormComponent } from './shared/component/mobile-form/mobile-form.component';
 
 
 
@@ -32,7 +34,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     Todo3ListComponent,
     Todo3FormComponent,
     Todo4ListComponent,
-    Todo4FormComponent
+    Todo4FormComponent,
+    MobileListComponent,
+    MobileFormComponent
   ],
   imports: [
     BrowserModule,

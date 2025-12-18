@@ -13,6 +13,7 @@ import { SnackBarService } from '../../service/snack-bar.service';
 })
 export class Todo2FormComponent implements OnInit {
   @ViewChild('addLang') form ! : NgForm
+  isEditMode : boolean = false
   constructor(
     private _todo2Service : Todo2Service,
     private _uuidService : UuidService,
@@ -20,6 +21,20 @@ export class Todo2FormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.editObj()
+  }
+  editObj(){
+    this._todo2Service.Lang$
+      .subscribe({
+        next : res =>{
+          this.form.form.patchValue(res)
+          this.isEditMode = true
+          this.editId = res.todoId
+        },
+        error : err =>{
+          console.log(err)
+        }
+      })
   }
   onAddLang(){
     if(this.form.valid){
@@ -31,5 +46,15 @@ export class Todo2FormComponent implements OnInit {
     this.form.reset()
     this._snackBar.snackBar('The new language is added successfully!!!')
     }
+  }
+  editId !: string
+  onUpdate(){
+    let obj = {
+      ...this.form.value,
+      todoId : this.editId
+    }
+    this._todo2Service.updateLang(obj)
+    this.form.reset()
+    this.isEditMode = false
   }
 }

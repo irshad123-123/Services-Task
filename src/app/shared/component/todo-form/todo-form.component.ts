@@ -16,8 +16,21 @@ export class TodoFormComponent implements OnInit {
               private _todoService : TodoService,
               private _matSnack : SnackBarService
   ) { }
+  isEditMode : boolean = false
 
   ngOnInit(): void {
+    this.editObj()
+  }
+  editObj(){
+    this._todoService.todo$
+      .subscribe({
+        next : res =>{
+          this.form.form.patchValue(res)
+          this.isEditMode = true
+          this.editId = res.todoId
+        },
+        error : err =>console.log(err)
+      })
   }
   onAddTodo(){
     if(this.form.valid){
@@ -30,6 +43,16 @@ export class TodoFormComponent implements OnInit {
     this.form.reset()
     this._matSnack.snackBar('The new todoItem is added successfully!!!')
     }
+  }
+  editId ! : string
+  onUpdate(){
+    let Obj = {
+      ...this.form.value,
+      todoId : this.editId
+    }
+    this._todoService.updateTodo(Obj)
+    this.isEditMode = false
+    this.form.reset()
   }
 
 }

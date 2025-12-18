@@ -18,4 +18,13 @@ export class Todo2ListComponent implements OnInit {
       })
   }
 
+  onRemove(todo2 : Itodo){
+    let isConfirm = confirm('Are you sure, want to remove this language !!!')
+    if(isConfirm){
+      this._todoService.removeLang(todo2.todoId)
+    }
+  }
+  onEdit(todo2:Itodo){
+    this._todoService.Lang$.next(todo2)
+  }
 }

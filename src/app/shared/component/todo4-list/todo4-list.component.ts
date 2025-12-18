@@ -18,5 +18,13 @@ export class Todo4ListComponent implements OnInit {
         this.todo4Arr = res
       })
   }
-
+  onRemove(id : string){
+    let isConfirm = confirm('Are you sure, want to remove this directive !!!')
+    if(isConfirm){
+      this._todo4Service.removeDirecitve(id)
+    }
+  }
+  onEdit(obj : Itodo){
+    this._todo4Service.directive$.next(obj)
+  }
 }
